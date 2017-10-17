@@ -11,9 +11,6 @@ class TemperatureInput extends React.Component{
     //构造函数
     constructor(props){
         super(props)
-        this.state = {
-            temperature:''
-        }
         this.handleChange=this.handleChange.bind(this)
     }
     handleChange(e){
@@ -39,8 +36,8 @@ function toCelsius(fahrenheit){
 }
 
 // 将摄氏温度转为华氏温度
-function tofahrenheit(Celsius){
-    return Celsius *  9 / 5 + 32
+function tofahrenheit(celsius){
+    return celsius *  9 / 5 + 32
 }
 
 function tryConvert(temperature, convert) {
