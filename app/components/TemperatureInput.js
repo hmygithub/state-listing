@@ -30,6 +30,13 @@ class TemperatureInput extends React.Component{
     }
 }
 
+function BoilingVerdict(props) {
+    if (props.celsius >= 100) {
+        return <p>水会烧开</p>;
+    }
+    return <p>水不会烧开</p>;
+}
+
 // 将华氏温度转为摄氏温度
 function toCelsius(fahrenheit){
     return (fahrenheit - 32) * 5 / 9
