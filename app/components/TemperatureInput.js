@@ -69,13 +69,21 @@ class TemperatureInput extends React.Component{
 // 将华氏温度转为摄氏温度
 function toCelsius(fahrenheit){
     return (fahrenheit - 32) * 5 / 9
-
 }
 
 // 将摄氏温度转为华氏温度
 function tofahrenheit(Celsius){
     return Celsius *  9 / 5 + 32
+}
 
+function tryConvert(temperature, convert) {
+    const input = parseFloat(temperature);
+    if (Number.isNaN(input)) {
+        return '';
+    }
+    const output = convert(input);
+    const rounded = Math.round(output * 1000) / 1000;
+    return rounded.toString();
 }
 
 //向外暴露
