@@ -17,10 +17,11 @@ class TemperatureInput extends React.Component{
         this.handleChange=this.handleChange.bind(this)
     }
     handleChange(e){
-        this.setState({temperature: e.target.value})
+        //this.setState({temperature: e.target.value})
+        this.props.onTemperatureChange(e.target.value)
     }
     render(){
-        const temperature = this.state.temperature
+        const temperature = this.props.temperature
         const scale = this.props.scale
         return (
             <fieldset>
@@ -47,7 +48,9 @@ function tryConvert(temperature, convert) {
     if (Number.isNaN(input)) {
         return '';
     }
+    //转换后的结果
     const output = convert(input);
+    //Math.round() 对值四舍五入
     const rounded = Math.round(output * 1000) / 1000;
     return rounded.toString();
 }
