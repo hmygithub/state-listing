@@ -3,6 +3,10 @@
  */
 import React from "react"
 
+const scaleNames = {
+    c: 'Celsius',
+    f: 'Fahrenheit'
+}
 class TemperatureInput extends React.Component{
     //构造函数
     constructor(props){
@@ -16,10 +20,11 @@ class TemperatureInput extends React.Component{
         this.setState({temperature: e.target.value})
     }
     render(){
-        const temperature = this.state.temperature;
+        const temperature = this.state.temperature
+        const scale = this.props.scale
         return (
             <fieldset>
-                <legend>输入一个摄氏温度</legend>
+                <legend>Enter temperature in {scaleNames[scale]}:</legend>
                 <input value={temperature} onChange={this.handleChange} />
                 <BoilingVerdict celsius={parseFloat(temperature)}/>
             </fieldset>
