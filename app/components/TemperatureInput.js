@@ -32,40 +32,6 @@ class TemperatureInput extends React.Component{
     }
 }
 
-/**
- * Created by lenovo on 2017/10/17.
- */
-import React from "react"
-
-const scaleNames = {
-    c: 'Celsius',
-    f: 'Fahrenheit'
-}
-class TemperatureInput extends React.Component{
-    //构造函数
-    constructor(props){
-        super(props)
-        this.state = {
-            temperature:''
-        }
-        this.handleChange=this.handleChange.bind(this)
-    }
-    handleChange(e){
-        this.setState({temperature: e.target.value})
-    }
-    render(){
-        const temperature = this.state.temperature
-        const scale = this.props.scale
-        return (
-            <fieldset>
-                <legend>Enter temperature in {scaleNames[scale]}:</legend>
-                <input value={temperature} onChange={this.handleChange} />
-                <BoilingVerdict celsius={parseFloat(temperature)}/>
-            </fieldset>
-        )
-    }
-}
-
 // 将华氏温度转为摄氏温度
 function toCelsius(fahrenheit){
     return (fahrenheit - 32) * 5 / 9
