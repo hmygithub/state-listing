@@ -8,7 +8,7 @@ const scaleNames = {
     f: 'Fahrenheit'
 }
 class TemperatureInput extends React.Component{
-    //¹¹Ôìº¯Êı
+    //æ„é€ å‡½æ•°
     constructor(props){
         super(props)
         this.state = {
@@ -32,13 +32,51 @@ class TemperatureInput extends React.Component{
     }
 }
 
-function BoilingVerdict(props){//·ĞÌÚµÄ ÅĞ¾ö
-    if(props.celsius >= 100){
-        return <p>Ë®»áÉÕ¿ª</p>
-    }else{
-        return <p>Ë®²»»áÉÕ¿ª</p>
+/**
+ * Created by lenovo on 2017/10/17.
+ */
+import React from "react"
+
+const scaleNames = {
+    c: 'Celsius',
+    f: 'Fahrenheit'
+}
+class TemperatureInput extends React.Component{
+    //æ„é€ å‡½æ•°
+    constructor(props){
+        super(props)
+        this.state = {
+            temperature:''
+        }
+        this.handleChange=this.handleChange.bind(this)
+    }
+    handleChange(e){
+        this.setState({temperature: e.target.value})
+    }
+    render(){
+        const temperature = this.state.temperature
+        const scale = this.props.scale
+        return (
+            <fieldset>
+                <legend>Enter temperature in {scaleNames[scale]}:</legend>
+                <input value={temperature} onChange={this.handleChange} />
+                <BoilingVerdict celsius={parseFloat(temperature)}/>
+            </fieldset>
+        )
     }
 }
 
-//ÏòÍâ±©Â¶
+// å°†åæ°æ¸©åº¦è½¬ä¸ºæ‘„æ°æ¸©åº¦
+function toCelsius(fahrenheit){
+    return (fahrenheit - 32) * 5 / 9
+
+}
+
+// å°†æ‘„æ°æ¸©åº¦è½¬ä¸ºåæ°æ¸©åº¦
+function tofahrenheit(Celsius){
+    return Celsius *  9 / 5 + 32
+
+}
+
+//å‘å¤–æš´éœ²
 export default TemperatureInput
